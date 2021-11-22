@@ -110,17 +110,16 @@ class RegisterController extends GetxController {
     return true;
   }
 
-  Future<void> registerUser(BuildContext context) async {
+  Future<void> registerUser() async {
     if (profileImage.path == '') {
       var snack = SnackBar(
         content: const Text(
           'Foto é obrigatória!',
-          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center,
         ),
-        backgroundColor: Colors.yellow[800],
-        padding: const EdgeInsets.all(26),
+        backgroundColor: Colors.redAccent[200],
       );
-      ScaffoldMessenger.of(context).showSnackBar(snack);
+      ScaffoldMessenger.of(Get.context!).showSnackBar(snack);
     }
     if (formKey.currentState!.validate()) {}
   }

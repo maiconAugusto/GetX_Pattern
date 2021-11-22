@@ -59,7 +59,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Informe seu nome.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -71,14 +71,16 @@ class RegisterView extends GetView<RegisterController> {
                             },
                             controller: controller.nameController,
                             keyboardType: TextInputType.name,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                                 hintText: 'Nome',
-                                hintStyle: TextStyle(fontSize: 14))),
+                                hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[400]))),
                         const SizedBox(height: 10),
                         Text(
                           'Informe seu e-mail.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -98,7 +100,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Informe seu telefone.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -119,7 +121,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Informe seu CPF.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -140,7 +142,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Informe seu CEP.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -170,7 +172,7 @@ class RegisterView extends GetView<RegisterController> {
                                 Text(
                                   'Informe sua cidade.',
                                   style: TextStyle(
-                                      color: Colors.grey[900],
+                                      color: Colors.blueGrey[600],
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -190,7 +192,7 @@ class RegisterView extends GetView<RegisterController> {
                                 Text(
                                   'Informe a rua.',
                                   style: TextStyle(
-                                      color: Colors.grey[900],
+                                      color: Colors.blueGrey[600],
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -210,7 +212,7 @@ class RegisterView extends GetView<RegisterController> {
                                 Text(
                                   'Informe o número da casa.',
                                   style: TextStyle(
-                                      color: Colors.grey[900],
+                                      color: Colors.blueGrey[600],
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -234,7 +236,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Informe sua ocupação.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -255,7 +257,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Agora fale um pouco sobre você.',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -271,7 +273,7 @@ class RegisterView extends GetView<RegisterController> {
                         Text(
                           'Sua senha',
                           style: TextStyle(
-                              color: Colors.grey[900],
+                              color: Colors.blueGrey[600],
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
@@ -303,7 +305,7 @@ class RegisterView extends GetView<RegisterController> {
                     CustomButton(
                       isLoading: false,
                       onPressed: () {
-                        controller.registerUser(context);
+                        controller.registerUser();
                       },
                       title: 'Cadastrar',
                     ),

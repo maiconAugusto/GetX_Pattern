@@ -96,7 +96,9 @@ class LoginView extends GetView<LoginController> {
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     child: CustomButton(
                       isLoading: false,
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.auth();
+                      },
                       title: 'Login',
                     ),
                   ),
@@ -111,10 +113,10 @@ class LoginView extends GetView<LoginController> {
                       onPressed: () {
                         Get.toNamed(Routes.register);
                       },
-                      child: const Text('Criar uma conta',
+                      child: const Text('CRIAR UMA CONTA',
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
-                              fontSize: 16,
+                              fontSize: 12,
                               color: Colors.indigoAccent)))
                 ],
               ),
