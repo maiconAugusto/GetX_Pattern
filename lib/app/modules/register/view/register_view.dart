@@ -9,7 +9,13 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'CADASTRO',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
       body: SingleChildScrollView(
           child: Form(
               key: controller.formKey,
@@ -141,8 +147,8 @@ class RegisterView extends GetView<RegisterController> {
                           controller: controller.cepController,
                           keyboardType: TextInputType.number,
                           inputFormatters: [controller.maskedCep],
-                          onChanged: (String value) {
-                            controller.getAddress(value);
+                          onChanged: (String cep) {
+                            controller.getAddress(cep);
                           },
                           decoration: const InputDecoration(
                               hintText: 'CEP',
@@ -153,6 +159,76 @@ class RegisterView extends GetView<RegisterController> {
                             }
                           },
                         ),
+                        const SizedBox(height: 10),
+                        Obx(() {
+                          return Visibility(
+                            visible: controller.hasAddress.value,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Informe sua cidade.',
+                                  style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                TextFormField(
+                                  controller: controller.cityController,
+                                  keyboardType: TextInputType.text,
+                                  decoration: const InputDecoration(
+                                      hintText: 'Cidade',
+                                      hintStyle: TextStyle(fontSize: 14)),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Cidade é obrigatório.';
+                                    }
+                                  },
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Informe a rua.',
+                                  style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                TextFormField(
+                                  controller: controller.streetController,
+                                  keyboardType: TextInputType.text,
+                                  decoration: const InputDecoration(
+                                      hintText: 'Rua',
+                                      hintStyle: TextStyle(fontSize: 14)),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Rua é obrigatório.';
+                                    }
+                                  },
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Informe o número da casa.',
+                                  style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                TextFormField(
+                                  controller: controller.houseNumberController,
+                                  keyboardType: TextInputType.text,
+                                  decoration: const InputDecoration(
+                                      hintText: 'Número',
+                                      hintStyle: TextStyle(fontSize: 14)),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Número é obrigatório.';
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
                         const SizedBox(height: 10),
                         Text(
                           'Informe sua ocupação.',
@@ -191,15 +267,46 @@ class RegisterView extends GetView<RegisterController> {
                                 hintText: 'Descrição',
                                 hintStyle: TextStyle(fontSize: 14))),
                         const SizedBox(height: 10),
+                        Text(
+                          'Sua senha',
+                          style: TextStyle(
+                              color: Colors.grey[900],
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Obx(() {
+                          return TextFormField(
+                              controller: controller.passwordController,
+                              keyboardType: TextInputType.text,
+                              obscureText: !controller.passwordVisible.value,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Senha é obrigatório.';
+                                }
+                              },
+                              decoration: InputDecoration(
+                                  suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        controller.lockPassword();
+                                      },
+                                      child: Icon(
+                                          controller.passwordVisible.value
+                                              ? Icons.visibility
+                                              : Icons.visibility_off)),
+                                  hintText: 'Senha',
+                                  hintStyle: const TextStyle(fontSize: 14)));
+                        })
                       ],
                     ),
+                    const SizedBox(height: 40),
                     CustomButton(
                       isLoading: false,
                       onPressed: () {
                         controller.registerUser(context);
                       },
                       title: 'Cadastrar',
-                    )
+                    ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ))),

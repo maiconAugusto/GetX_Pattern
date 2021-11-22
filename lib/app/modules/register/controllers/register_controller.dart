@@ -17,6 +17,10 @@ class RegisterController extends GetxController {
   TextEditingController phoneController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController cepController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
+  TextEditingController houseNumberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   double latitude = 0;
   double longitude = 0;
@@ -24,6 +28,9 @@ class RegisterController extends GetxController {
   final Rx<File>? _avatar = File('').obs;
   final ImagePicker _picker = ImagePicker();
   final formKey = GlobalKey<FormState>();
+  final Rx<AddressModel> _address = AddressModel().obs;
+  final Rx<bool> hasAddress = false.obs;
+  final Rx<bool> passwordVisible = false.obs;
 
   var maskedCPF = MaskTextInputFormatter(
       mask: '###.###.###-##', filter: {"#": RegExp(r'[0-9]')});
@@ -35,6 +42,7 @@ class RegisterController extends GetxController {
       mask: '#####-###', filter: {"#": RegExp(r'[0-9]')});
 
   File get profileImage => _avatar!.value;
+  AddressModel get getAddressUser => _address.value;
 
   @override
   void onInit() {
@@ -48,7 +56,18 @@ class RegisterController extends GetxController {
   Future<void> getAddress(String cep) async {
     if (cep.replaceAll('-', '').length >= 8) {
       final AddressModel response = await apiAddress.getAddress(cep);
-      print(response.logradouro);
+      _address.value = response;
+      hasAddress.value = true;
+      cityController.text = response.localidade!;
+      streetController.text = response.logradouro!;
+    }
+  }
+
+  void lockPassword() {
+    if (passwordVisible.value == false) {
+      passwordVisible.value = true;
+    } else {
+      passwordVisible.value = false;
     }
   }
 
@@ -102,7 +121,6 @@ class RegisterController extends GetxController {
         padding: const EdgeInsets.all(26),
       );
       ScaffoldMessenger.of(context).showSnackBar(snack);
-      return;
     }
     if (formKey.currentState!.validate()) {}
   }
