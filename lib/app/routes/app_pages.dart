@@ -3,6 +3,8 @@ import 'package:get_x/app/modules/home/bindings/home_bindings.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
 import 'package:get_x/app/modules/location/bindings/location_bindings.dart';
 import 'package:get_x/app/modules/location/view/location_view.dart';
+import 'package:get_x/app/modules/login/bindings/login_bindings.dart';
+import 'package:get_x/app/modules/login/view/login_view.dart';
 import 'package:get_x/app/modules/register/bindings/register_bindings.dart';
 import 'package:get_x/app/modules/register/view/register_view.dart';
 import 'package:get_x/app/routes/app_routes.dart';
@@ -25,6 +27,10 @@ class AppPages {
       name: Routes.location,
       page: () => const LocationView(),
       binding: LocationBinding(),
-    )
+    ),
+    GetPage(
+        name: Routes.login,
+        page: () => const LoginView(),
+        binding: LoginBindings())
   ];
 }

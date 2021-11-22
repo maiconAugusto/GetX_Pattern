@@ -12,6 +12,6 @@ void main() {
     theme: themeApp,
     getPages: AppPages.routes,
     initialBinding: InitialBinding(),
-    initialRoute: Routes.register,
+    initialRoute: Routes.login,
   ));
 }

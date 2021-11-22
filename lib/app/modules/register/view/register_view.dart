@@ -11,8 +11,9 @@ class RegisterView extends GetView<RegisterController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.indigoAccent,
         title: const Text(
-          'CADASTRO',
+          'Cadastro',
           style: TextStyle(fontSize: 16),
         ),
       ),
@@ -33,7 +34,7 @@ class RegisterView extends GetView<RegisterController> {
                             width: 60,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(75),
-                              border: Border.all(color: Colors.blue),
+                              border: Border.all(color: Colors.indigoAccent),
                               image: DecorationImage(
                                 image: FileImage(
                                   controller.profileImage,
@@ -45,7 +46,7 @@ class RegisterView extends GetView<RegisterController> {
                             child: controller.profileImage.path == ''
                                 ? const Icon(
                                     Icons.add_a_photo,
-                                    color: Colors.blue,
+                                    color: Colors.indigoAccent,
                                     size: 25,
                                   )
                                 : null,

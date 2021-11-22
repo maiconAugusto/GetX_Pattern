@@ -14,11 +14,11 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 65,
       width: double.maxFinite,
       child: isLoading
           ? Container(
-              color: Colors.blue[800],
+              color: Colors.indigoAccent[400],
               width: double.infinity,
               child: const Center(
                   child: SizedBox(
@@ -28,13 +28,16 @@ class CustomButton extends StatelessWidget {
                         color: Colors.white,
                       ))))
           : ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigoAccent),
+              ),
               onPressed: () {
                 onPressed();
               },
               child: Text(
                 title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               )),
     );
   }
