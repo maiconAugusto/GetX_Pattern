@@ -4,7 +4,7 @@ import 'package:get_x/app/modules/chat_list/view/chat_list.dart';
 import 'package:get_x/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:get_x/app/modules/favorites/view/favorites_view.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
-import 'package:get_x/app/modules/my_data/view/my_data_view.dart';
+import 'package:get_x/app/modules/menu/view/menu_view.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -23,7 +23,8 @@ class DashboardView extends StatelessWidget {
             backgroundColor: Colors.indigoAccent,
             actions: [
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.notifications))
+                  onPressed: () {},
+                  icon: const Icon(Icons.notifications, color: Colors.red))
             ],
           ),
           body: SafeArea(
@@ -32,7 +33,7 @@ class DashboardView extends StatelessWidget {
               children: const [
                 HomeView(),
                 FavoritesView(),
-                MyDataView(),
+                MenuView(),
                 ChatListView(),
               ],
             ),
@@ -43,7 +44,7 @@ class DashboardView extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.home_filled,
                   color: Colors.white,
                 ),
                 label: 'Home',
@@ -57,11 +58,11 @@ class DashboardView extends StatelessWidget {
                 label: 'Favoritos',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person, color: Colors.white),
-                label: 'Meu perfil',
+                icon: Icon(Icons.menu, color: Colors.white),
+                label: 'Menu',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.chat, color: Colors.white),
+                icon: Icon(Icons.chat_bubble, color: Colors.white),
                 label: 'Chat',
               ),
             ],

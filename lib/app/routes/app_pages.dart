@@ -11,8 +11,12 @@ import 'package:get_x/app/modules/location/bindings/location_bindings.dart';
 import 'package:get_x/app/modules/location/view/location_view.dart';
 import 'package:get_x/app/modules/login/bindings/login_bindings.dart';
 import 'package:get_x/app/modules/login/view/login_view.dart';
+import 'package:get_x/app/modules/menu/bindings/menu_bindings.dart';
+import 'package:get_x/app/modules/menu/view/menu_view.dart';
 import 'package:get_x/app/modules/my_data/bindings/my_data_bindings.dart';
 import 'package:get_x/app/modules/my_data/view/my_data_view.dart';
+import 'package:get_x/app/modules/password/bindings/password_bindings.dart';
+import 'package:get_x/app/modules/password/view/password_view.dart';
 import 'package:get_x/app/modules/profile/bindings/profile_bindings.dart';
 import 'package:get_x/app/modules/profile/view/profile_view.dart';
 import 'package:get_x/app/modules/register/bindings/register_bindings.dart';
@@ -62,6 +66,16 @@ class AppPages {
       name: Routes.mydata,
       page: () => const MyDataView(),
       binding: MyDataBindings(),
+    ),
+    GetPage(
+      name: Routes.menu,
+      page: () => const MenuView(),
+      binding: MenuBindings(),
+    ),
+    GetPage(
+      name: Routes.password,
+      page: () => const PasswordView(),
+      binding: PasswordBindings(),
     ),
     GetPage(
         name: Routes.login,

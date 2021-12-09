@@ -20,7 +20,16 @@ class ProfileView extends GetView<ProfileController> {
             },
             icon: const Icon(Icons.arrow_back_rounded)),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border))
+          Obx(() {
+            return IconButton(
+                onPressed: () {},
+                icon: controller.isFavorite.value
+                    ? Icon(
+                        Icons.favorite,
+                        color: Colors.red[300],
+                      )
+                    : const Icon(Icons.favorite_border));
+          })
         ],
       ),
       body: SingleChildScrollView(

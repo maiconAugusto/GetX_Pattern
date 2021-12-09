@@ -9,4 +9,6 @@ abstract class Routes {
   static const dashboard = '/dashboard';
   static const chatlist = '/chatlist';
   static const mydata = '/mydata';
+  static const menu = '/menu';
+  static const password = '/password';
 }

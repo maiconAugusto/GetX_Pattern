@@ -9,14 +9,16 @@ class FavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+        body: Container(
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
+      child: ListView.builder(
         itemCount: 4,
         itemBuilder: (context, index) {
           return ProfileCard(
               name: 'Maicon Augusto Carvalho de Freitas',
               ocupation: 'Desenvolvedor Jr.',
               onPress: () {
-                Get.toNamed(Routes.profile);
+                Get.toNamed(Routes.profile, arguments: {'isFavorite': true});
               },
               rate: 2,
               isRate: true,
@@ -27,6 +29,6 @@ class FavoritesView extends StatelessWidget {
               description: '');
         },
       ),
-    );
+    ));
   }
 }

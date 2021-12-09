@@ -9,6 +9,19 @@ class MyDataView extends GetView<MyDataController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_rounded)),
+        title: const Text(
+          'Meus dados',
+          style: TextStyle(fontSize: 14),
+        ),
+        backgroundColor: Colors.indigoAccent,
+      ),
       body: SingleChildScrollView(
           child: Form(
               key: controller.formKey,
@@ -68,26 +81,6 @@ class MyDataView extends GetView<MyDataController> {
                                 hintStyle: TextStyle(
                                     fontSize: 14,
                                     color: Colors.blueGrey[400]))),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Informe seu e-mail.',
-                          style: TextStyle(
-                              color: Colors.blueGrey[600],
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        TextFormField(
-                          controller: controller.emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                              hintText: 'E-mail',
-                              hintStyle: TextStyle(fontSize: 14)),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'E-mail é obrigatório.';
-                            }
-                          },
-                        ),
                         const SizedBox(height: 10),
                         Text(
                           'Informe seu telefone.',
@@ -301,7 +294,7 @@ class MyDataView extends GetView<MyDataController> {
                       },
                       title: 'Salvar',
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 22),
                   ],
                 ),
               ))),

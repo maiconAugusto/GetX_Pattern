@@ -10,7 +10,9 @@ class ChatListView extends GetView<ChatListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+        body: Container(
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
+      child: ListView.builder(
         shrinkWrap: true,
         itemCount: 4,
         itemBuilder: (context, index) {
@@ -29,6 +31,6 @@ class ChatListView extends GetView<ChatListController> {
               description: '');
         },
       ),
-    );
+    ));
   }
 }

@@ -19,7 +19,7 @@ class DashboardController extends GetxController {
         }
       case 2:
         {
-          title = 'Meus dados';
+          title = 'Menu';
           break;
         }
       case 3:
