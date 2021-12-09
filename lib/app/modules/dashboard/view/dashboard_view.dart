@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:get_x/app/modules/favorites/view/favorites_view.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
 
 class DashboardView extends StatelessWidget {
@@ -24,6 +25,7 @@ class DashboardView extends StatelessWidget {
               index: controller.tabIndex,
               children: const [
                 HomeView(),
+                FavoritesView(),
               ],
             ),
           ),
