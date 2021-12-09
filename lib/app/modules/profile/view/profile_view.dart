@@ -1,9 +1,8 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/core/components/profile_card/profile_card.dart';
-import 'package:get_x/app/core/images.dart';
 import 'package:get_x/app/modules/profile/controllers/profile_controller.dart';
-import 'package:progressive_image/progressive_image.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
@@ -34,6 +33,44 @@ class ProfileView extends GetView<ProfileController> {
               expandend: true,
               description:
                   'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English.',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Card(
+              elevation: 4,
+              child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Container(
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.phone,
+                              size: 20,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '67 89898-9090',
+                              style: Get.textTheme.bodyText2,
+                            )
+                          ],
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              FlutterClipboard.copy('9009').then((value) =>
+                                  {controller.printWarning('Número copiado')});
+                            },
+                            icon: const Icon(Icons.copy_outlined))
+                      ],
+                    ),
+                  )),
             ),
             const SizedBox(
               height: 10,
