@@ -97,7 +97,7 @@ class LoginView extends GetView<LoginController> {
                     child: CustomButton(
                       isLoading: false,
                       onPressed: () {
-                        Get.offAllNamed(Routes.home);
+                        Get.offAllNamed(Routes.dashboard);
                         controller.auth();
                       },
                       title: 'Login',

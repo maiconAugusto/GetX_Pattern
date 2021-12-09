@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:get_x/app/modules/chat/bindings/chat_bindings.dart';
 import 'package:get_x/app/modules/chat/view/chat_view.dart';
+import 'package:get_x/app/modules/dashboard/bindings/dashboard_bindings.dart';
+import 'package:get_x/app/modules/dashboard/view/dashboard_view.dart';
 import 'package:get_x/app/modules/home/bindings/home_bindings.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
 import 'package:get_x/app/modules/location/bindings/location_bindings.dart';
@@ -41,6 +43,11 @@ class AppPages {
       name: Routes.chat,
       page: () => const ChatView(),
       binding: ChatBindinds(),
+    ),
+    GetPage(
+      name: Routes.dashboard,
+      page: () => const DashboardView(),
+      binding: DashboardBindings(),
     ),
     GetPage(
         name: Routes.login,
