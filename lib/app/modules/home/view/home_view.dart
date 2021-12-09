@@ -11,7 +11,9 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+        body: Container(
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
+      child: ListView.builder(
           shrinkWrap: true,
           itemCount: 12,
           itemBuilder: (BuildContext context, int index) {
@@ -22,9 +24,13 @@ class HomeView extends GetView<HomeController> {
                   Get.toNamed(Routes.profile);
                 },
                 rate: 2,
+                isRate: true,
+                radius: 8.0,
+                height: 100.0,
+                width: 100.0,
                 expandend: false,
                 description: '');
           }),
-    );
+    ));
   }
 }

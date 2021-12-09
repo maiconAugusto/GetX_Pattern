@@ -7,4 +7,6 @@ abstract class Routes {
   static const profile = '/profile';
   static const chat = '/chat';
   static const dashboard = '/dashboard';
+  static const chatlist = '/chatlist';
+  static const mydata = '/mydata';
 }

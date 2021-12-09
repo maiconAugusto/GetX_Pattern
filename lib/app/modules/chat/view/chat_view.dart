@@ -27,7 +27,7 @@ class ChatView extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: 1,
+              itemCount: 2,
               reverse: true,
               itemBuilder: (context, index) {
                 return ListTile(
@@ -46,7 +46,10 @@ class ChatView extends StatelessWidget {
                       )),
                   title: Text(
                     'Boa tarde, gostaria de saber se voce tem disponibilidade para um trabalho totalmente remote?',
-                    style: Get.textTheme.bodyText2,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.blueGrey[800],
+                    ),
                   ),
                 );
               },

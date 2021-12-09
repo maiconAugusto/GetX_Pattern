@@ -32,6 +32,10 @@ class ProfileView extends GetView<ProfileController> {
               onPress: () {},
               rate: 5,
               expandend: true,
+              isRate: true,
+              radius: 8.0,
+              height: 100.0,
+              width: 100.0,
               description:
                   'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English.',
             ),
@@ -74,49 +78,13 @@ class ProfileView extends GetView<ProfileController> {
                   )),
             ),
             const SizedBox(
-              height: 10,
+              height: 8,
             ),
             Obx(() {
               return Padding(
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 child: Column(
                   children: [
-                    ExpansionPanelList(
-                      expansionCallback: (int index, bool isExpanded) {
-                        controller.openAvaliation.value =
-                            !controller.openAvaliation.value;
-                      },
-                      elevation: 4,
-                      children: [
-                        ExpansionPanel(
-                          headerBuilder: (context, isExpanded) {
-                            return ListTile(
-                              title: Text(
-                                'Ver avaliações',
-                                style: Get.textTheme.bodyText1,
-                              ),
-                            );
-                          },
-                          body: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 3,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                title: Text(
-                                  'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
-                                  style: Get.textTheme.bodyText2,
-                                ),
-                              );
-                            },
-                          ),
-                          isExpanded: controller.openAvaliation.value,
-                          canTapOnHeader: false,
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     ExpansionPanelList(
                       expansionCallback: (int index, bool isExpanded) {
                         controller.openAddress.value =
@@ -129,21 +97,69 @@ class ProfileView extends GetView<ProfileController> {
                             return ListTile(
                               title: Text(
                                 'Endereço',
-                                style: Get.textTheme.bodyText1,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[800],
+                                    fontWeight: FontWeight.w500),
                               ),
                             );
                           },
                           body: ListTile(
                             title: Text(
                               'Ponta Porã, Rua Guia Lopez, N 152',
-                              style: Get.textTheme.bodyText2,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.blueGrey[800],
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                           isExpanded: controller.openAddress.value,
                           canTapOnHeader: false,
                         )
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ExpansionPanelList(
+                      expansionCallback: (int index, bool isExpanded) {
+                        controller.openAvaliation.value =
+                            !controller.openAvaliation.value;
+                      },
+                      elevation: 4,
+                      children: [
+                        ExpansionPanel(
+                          headerBuilder: (context, isExpanded) {
+                            return ListTile(
+                              title: Text(
+                                'Ver avaliações',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[800],
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            );
+                          },
+                          body: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: 3,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(
+                                  'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[800],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          isExpanded: controller.openAvaliation.value,
+                          canTapOnHeader: false,
+                        )
+                      ],
+                    ),
                   ],
                 ),
               );

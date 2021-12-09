@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/app/modules/chat_list/view/chat_list.dart';
 import 'package:get_x/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:get_x/app/modules/favorites/view/favorites_view.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
+import 'package:get_x/app/modules/my_data/view/my_data_view.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -14,6 +16,10 @@ class DashboardView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
+            title: Text(
+              controller.title,
+              style: const TextStyle(fontSize: 14),
+            ),
             backgroundColor: Colors.indigoAccent,
             actions: [
               IconButton(
@@ -26,6 +32,8 @@ class DashboardView extends StatelessWidget {
               children: const [
                 HomeView(),
                 FavoritesView(),
+                MyDataView(),
+                ChatListView(),
               ],
             ),
           ),

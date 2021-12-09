@@ -14,6 +14,10 @@ class ProfileCard extends StatelessWidget {
     required this.rate,
     required this.expandend,
     required this.description,
+    required this.isRate,
+    required this.radius,
+    required this.height,
+    required this.width,
   }) : super(key: key);
   final String name;
   final String ocupation;
@@ -21,6 +25,10 @@ class ProfileCard extends StatelessWidget {
   final int rate;
   final bool expandend;
   final String description;
+  final bool isRate;
+  final double radius;
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +47,15 @@ class ProfileCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(radius),
                             child: ProgressiveImage(
                               thumbnail: const NetworkImage(Images.profile),
                               image: const NetworkImage(
                                 Images.profile,
                               ),
-                              height: 100,
+                              height: height,
                               fit: BoxFit.cover,
-                              width: 100,
+                              width: width,
                               placeholder: null,
                             )),
                         const SizedBox(
@@ -62,7 +70,10 @@ class ProfileCard extends StatelessWidget {
                             ),
                             Text(
                               name,
-                              style: Get.theme.textTheme.bodyText1,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.blueGrey[800],
+                                  fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(
@@ -70,14 +81,20 @@ class ProfileCard extends StatelessWidget {
                             ),
                             Text(
                               ocupation,
-                              style: Get.theme.textTheme.bodyText2,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.blueGrey[600],
+                                  fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
                               height: 4,
                             ),
-                            Rate(
-                              rate: rate,
-                            )
+                            Visibility(
+                              visible: isRate,
+                              child: Rate(
+                                rate: rate,
+                              ),
+                            ),
                           ],
                         ))
                       ],
@@ -87,9 +104,13 @@ class ProfileCard extends StatelessWidget {
                         child: Column(
                           children: [
                             const SizedBox(
-                              height: 12,
+                              height: 14,
                             ),
-                            Text(description, style: Get.textTheme.bodyText2),
+                            Text(description,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[600],
+                                    fontWeight: FontWeight.w500)),
                             const SizedBox(
                               height: 10,
                             ),
