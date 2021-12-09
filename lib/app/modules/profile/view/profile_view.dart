@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/core/components/profile_card/profile_card.dart';
 import 'package:get_x/app/modules/profile/controllers/profile_controller.dart';
+import 'package:get_x/app/routes/app_routes.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
@@ -149,6 +150,13 @@ class ProfileView extends GetView<ProfileController> {
             })
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigoAccent,
+        child: const Icon(Icons.messenger_outline_rounded),
+        onPressed: () {
+          Get.toNamed(Routes.chat);
+        },
       ),
     );
   }

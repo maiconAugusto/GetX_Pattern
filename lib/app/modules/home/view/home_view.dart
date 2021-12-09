@@ -15,11 +15,11 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
         backgroundColor: Colors.indigoAccent,
         actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.location_searching))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
         ],
       ),
       body: ListView.builder(
+          shrinkWrap: true,
           itemCount: 12,
           itemBuilder: (BuildContext context, int index) {
             return ProfileCard(
