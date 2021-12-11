@@ -92,33 +92,44 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: CustomButton(
-                      isLoading: false,
-                      onPressed: () {
-                        Get.offAllNamed(Routes.dashboard);
-                        controller.auth();
-                      },
-                      title: 'Login',
-                    ),
-                  ),
+                  Obx(() {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: CustomButton(
+                        isLoading: controller.loading.value,
+                        onPressed: () {
+                          controller.auth();
+                        },
+                        title: 'Login',
+                      ),
+                    );
+                  }),
                   const SizedBox(
                     height: 40,
                   ),
-                  Text(
-                    'Não tem uma conta?',
-                    style: TextStyle(color: Colors.blueGrey[400]),
+                  Visibility(
+                    visible: !controller.loading.value,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Não tem uma conta?',
+                          style: TextStyle(color: Colors.blueGrey[400]),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Get.toNamed(Routes.register);
+                            },
+                            child: const Text('CRIAR UMA CONTA',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 12,
+                                    color: Colors.indigoAccent)))
+                      ],
+                    ),
+                    replacement: const SizedBox(
+                      height: 65,
+                    ),
                   ),
-                  TextButton(
-                      onPressed: () {
-                        Get.toNamed(Routes.register);
-                      },
-                      child: const Text('CRIAR UMA CONTA',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 12,
-                              color: Colors.indigoAccent)))
                 ],
               ),
             ),
