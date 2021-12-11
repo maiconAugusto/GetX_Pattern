@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/app/modules/menu/controllers/menu_controller.dart';
 import 'package:get_x/app/routes/app_routes.dart';
 
-class MenuView extends StatelessWidget {
+class MenuView extends GetView<MenuController> {
   const MenuView({Key? key}) : super(key: key);
 
   @override
@@ -44,7 +45,7 @@ class MenuView extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.password);
+                controller.exit();
               },
               child: Card(
                 elevation: 4,

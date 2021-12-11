@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/data/model/user_model.dart';
-import 'package:get_x/app/data/provider/home_provider.dart';
+import 'package:get_x/app/data/provider/user_provider.dart';
 import 'package:get_x/app/utils/base_utils.dart';
 
 class HomeController extends GetxController {
-  final HomeProvider _users = Get.find<HomeProvider>();
+  final UserProvider _users = Get.find<UserProvider>();
   final RxBool value = false.obs;
   final RxBool loading = false.obs;
 

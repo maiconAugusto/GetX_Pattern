@@ -15,6 +15,7 @@ class FavoritesView extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (context, index) {
           return ProfileCard(
+              photo: '',
               name: 'Maicon Augusto Carvalho de Freitas',
               ocupation: 'Desenvolvedor Jr.',
               onPress: () {

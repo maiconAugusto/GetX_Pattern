@@ -18,7 +18,7 @@ class DashboardView extends StatelessWidget {
             centerTitle: true,
             title: Text(
               controller.title,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 16),
             ),
             backgroundColor: Colors.indigoAccent,
             actions: [

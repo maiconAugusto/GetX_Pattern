@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_x/app/data/model/auth_model.dart';
 import 'package:get_x/app/data/provider/authentication.dart';
 import 'package:get_x/app/routes/app_routes.dart';
+import 'package:get_x/app/utils/base_utils.dart';
 
 class LoginController extends GetxController {
   final AuthenticationProvider _authentication = AuthenticationProvider();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  BaseUtils utils = BaseUtils();
 
   final Rx<bool> passwordVisible = false.obs;
   RxBool loading = false.obs;
@@ -47,9 +48,13 @@ class LoginController extends GetxController {
         printWarning('Informe sua senha.');
         return;
       }
+
       loading.value = true;
 
-      await _authentication.auth(email.text, password.text);
+      final response = await _authentication.auth(email.text, password.text);
+
+      await utils.setId(response['user']['id']);
+
       loading.value = false;
       Get.offAllNamed(Routes.dashboard);
     } on DioError catch (e) {

@@ -21,16 +21,18 @@ class HomeView extends GetView<HomeController> {
                   itemCount: controller.users.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ProfileCard(
+                        photo: controller.users[index].photo ?? '',
                         name: controller.users[index].name ?? '',
                         ocupation: controller.users[index].occupation ?? '',
                         onPress: () {
-                          Get.toNamed(Routes.profile);
+                          Get.toNamed(Routes.profile,
+                              arguments: {'id': controller.users[index].id});
                         },
                         rate: 2,
                         isRate: true,
                         radius: 8.0,
-                        height: 100.0,
-                        width: 100.0,
+                        height: 80.0,
+                        width: 80.0,
                         expandend: false,
                         description: '');
                   }),

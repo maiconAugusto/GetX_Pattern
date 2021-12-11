@@ -19,23 +19,26 @@ class UserModel {
   bool? active;
   String? birthDate;
   String? photo;
+  String? street;
 
-  UserModel(
-      {this.id,
-      this.name,
-      this.email,
-      this.phone,
-      this.cpf,
-      this.cep,
-      this.occupation,
-      this.description,
-      this.city,
-      this.state,
-      this.country,
-      this.houseNumber,
-      this.active,
-      this.birthDate,
-      this.photo});
+  UserModel({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.cpf,
+    this.cep,
+    this.occupation,
+    this.description,
+    this.city,
+    this.state,
+    this.country,
+    this.houseNumber,
+    this.active,
+    this.birthDate,
+    this.photo,
+    this.street,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return _$UserModelFromJson(json);

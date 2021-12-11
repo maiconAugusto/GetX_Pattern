@@ -5,4 +5,5 @@ class BaseUrls {
   static const String favorites = 'favorites';
   static const String register = 'register';
   static const String users = 'users';
+  static const String user = 'user';
 }
