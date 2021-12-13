@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/core/images.dart';
+import 'package:get_x/app/modules/chat/controller/chat_controller.dart';
 import 'package:progressive_image/progressive_image.dart';
 
-class ChatView extends StatelessWidget {
+class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
 
   @override

@@ -19,6 +19,7 @@ import 'package:get_x/app/modules/password/bindings/password_bindings.dart';
 import 'package:get_x/app/modules/password/view/password_view.dart';
 import 'package:get_x/app/modules/profile/bindings/profile_bindings.dart';
 import 'package:get_x/app/modules/profile/view/profile_view.dart';
+import 'package:get_x/app/modules/register/view/success_view.dart';
 import 'package:get_x/app/modules/register/bindings/register_bindings.dart';
 import 'package:get_x/app/modules/register/view/register_view.dart';
 import 'package:get_x/app/routes/app_routes.dart';
@@ -76,6 +77,11 @@ class AppPages {
       name: Routes.password,
       page: () => const PasswordView(),
       binding: PasswordBindings(),
+    ),
+    GetPage(
+      name: Routes.sucessRegister,
+      page: () => const SuccessView(),
+      binding: RegisterBindings(),
     ),
     GetPage(
         name: Routes.login,

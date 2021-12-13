@@ -12,6 +12,11 @@ class RegisterView extends GetView<RegisterController> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.indigoAccent,
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_rounded)),
         title: const Text(
           'Cadastro',
           style: TextStyle(fontSize: 16),
@@ -76,7 +81,29 @@ class RegisterView extends GetView<RegisterController> {
                                 hintStyle: TextStyle(
                                     fontSize: 14,
                                     color: Colors.blueGrey[400]))),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
+                        Text(
+                          'Informe a data de nascimento.',
+                          style: TextStyle(
+                              color: Colors.blueGrey[600],
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Data de nascimento é obrigatório.';
+                              }
+                            },
+                            controller: controller.dateBirthController,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [controller.maskedBirthDate],
+                            decoration: InputDecoration(
+                                hintText: 'Data de nascimento',
+                                hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.blueGrey[400]))),
+                        const SizedBox(height: 30),
                         Text(
                           'Informe seu e-mail.',
                           style: TextStyle(
@@ -96,7 +123,7 @@ class RegisterView extends GetView<RegisterController> {
                             }
                           },
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Text(
                           'Informe seu telefone.',
                           style: TextStyle(
@@ -117,7 +144,7 @@ class RegisterView extends GetView<RegisterController> {
                             }
                           },
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Text(
                           'Informe seu CPF.',
                           style: TextStyle(
@@ -138,7 +165,7 @@ class RegisterView extends GetView<RegisterController> {
                             }
                           },
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Text(
                           'Informe seu CEP.',
                           style: TextStyle(
@@ -162,7 +189,7 @@ class RegisterView extends GetView<RegisterController> {
                             }
                           },
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Obx(() {
                           return Visibility(
                             visible: controller.hasAddress.value,
@@ -188,7 +215,7 @@ class RegisterView extends GetView<RegisterController> {
                                     }
                                   },
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 30),
                                 Text(
                                   'Informe a rua.',
                                   style: TextStyle(
@@ -208,7 +235,7 @@ class RegisterView extends GetView<RegisterController> {
                                     }
                                   },
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 30),
                                 Text(
                                   'Informe o número da casa.',
                                   style: TextStyle(
@@ -232,7 +259,7 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                           );
                         }),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Text(
                           'Informe sua ocupação.',
                           style: TextStyle(
@@ -302,13 +329,15 @@ class RegisterView extends GetView<RegisterController> {
                       ],
                     ),
                     const SizedBox(height: 40),
-                    CustomButton(
-                      isLoading: false,
-                      onPressed: () {
-                        controller.registerUser();
-                      },
-                      title: 'Cadastrar',
-                    ),
+                    Obx(() {
+                      return CustomButton(
+                        isLoading: controller.loading.value,
+                        onPressed: () {
+                          controller.registerUser();
+                        },
+                        title: 'Cadastrar',
+                      );
+                    }),
                     const SizedBox(height: 10),
                   ],
                 ),

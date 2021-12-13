@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/modules/chat_list/view/chat_list.dart';
@@ -62,7 +63,10 @@ class DashboardView extends StatelessWidget {
                 label: 'Menu',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble, color: Colors.white),
+                icon: Icon(
+                  CupertinoIcons.chat_bubble_2_fill,
+                  color: Colors.white,
+                ),
                 label: 'Chat',
               ),
             ],

@@ -31,4 +31,19 @@ class HomeController extends GetxController {
       loading.value = false;
     }
   }
+
+  Future<void> refreshAllUsers() async {
+    try {
+      loading.value = true;
+      _usersPlatform.clear();
+
+      final response = await _users.allUsersPlatform();
+
+      _usersPlatform.addAll(response);
+      loading.value = false;
+    } on DioError catch (e) {
+      utils.printWarning(e.response!.data['error']);
+      loading.value = false;
+    }
+  }
 }

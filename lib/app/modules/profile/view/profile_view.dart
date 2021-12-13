@@ -1,4 +1,5 @@
 import 'package:clipboard/clipboard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/core/components/profile_card/profile_card.dart';
@@ -24,7 +25,11 @@ class ProfileView extends GetView<ProfileController> {
             Obx(() {
               return IconButton(
                   onPressed: () {
-                    controller.favorite(controller.showUser.id.toString());
+                    if (controller.isFavorite.value == true) {
+                      controller.unFavorite(Get.arguments?['_id']);
+                    } else {
+                      controller.favorite(controller.showUser.id.toString());
+                    }
                   },
                   icon: controller.isFavorite.value
                       ? Icon(
@@ -190,9 +195,11 @@ class ProfileView extends GetView<ProfileController> {
               ? const SizedBox()
               : FloatingActionButton(
                   backgroundColor: Colors.indigoAccent,
-                  child: const Icon(Icons.messenger_outline_rounded),
+                  child: const Icon(CupertinoIcons.chat_bubble),
                   onPressed: () {
-                    Get.toNamed(Routes.chat);
+                    Get.toNamed(Routes.chat, arguments: {
+                      'userId': controller.showUser.id,
+                    });
                   },
                 );
         }));

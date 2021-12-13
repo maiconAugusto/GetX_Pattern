@@ -38,9 +38,20 @@ class ProfileController extends GetxController {
     try {
       String? userId = await utils.getId();
       final response = await _user.favorite(userId!, favoriteId);
+      isFavorite.value = false;
       utils.printWarningSucess(response);
     } catch (e) {
       utils.printWarning('Erro ao favoritar');
+    }
+  }
+
+  Future<void> unFavorite(String id) async {
+    try {
+      await _user.removeFavorite(id);
+      isFavorite.value = false;
+      utils.printWarningSucess('Desfavoritado');
+    } catch (e) {
+      utils.printWarning('Erro ao desfavoritar');
     }
   }
 

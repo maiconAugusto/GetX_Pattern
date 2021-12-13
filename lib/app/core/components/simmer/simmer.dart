@@ -51,7 +51,7 @@ class Simmer extends StatelessWidget {
             ),
           );
         },
-        itemCount: 7,
+        itemCount: 6,
         separatorBuilder: (_, __) => const SizedBox(
           height: 16,
         ),

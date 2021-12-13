@@ -11,4 +11,5 @@ abstract class Routes {
   static const mydata = '/mydata';
   static const menu = '/menu';
   static const password = '/password';
+  static const sucessRegister = '/sucessRegister';
 }
