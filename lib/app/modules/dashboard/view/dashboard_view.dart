@@ -25,7 +25,8 @@ class DashboardView extends StatelessWidget {
             actions: [
               IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.notifications, color: Colors.red))
+                  icon: const Icon(Icons.notifications_none_outlined,
+                      color: Colors.white))
             ],
           ),
           body: SafeArea(

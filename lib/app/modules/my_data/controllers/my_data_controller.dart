@@ -177,7 +177,7 @@ class MyDataController extends GetxController {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     File compressedFile = await FlutterNativeImage.compressImage(image!.path,
-        quality: 60, percentage: 70);
+        quality: 50, percentage: 50);
 
     final bytes = File(compressedFile.path).readAsBytesSync();
     String base64Image = "data:image/png;base64," + base64Encode(bytes);
@@ -212,7 +212,7 @@ class MyDataController extends GetxController {
               state: countryController.text));
       utils.printWarningSucess('Dados atualizados com sucesso');
       loading.value = false;
-    } on DioError catch (e) {
+    } catch (e) {
       loading.value = false;
       utils.printWarning('Erro ao salvar os dados');
     }
