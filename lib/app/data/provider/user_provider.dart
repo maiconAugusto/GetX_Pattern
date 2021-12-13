@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_x/app/core/api.dart';
 import 'package:get_x/app/core/urls.dart';
+import 'package:get_x/app/data/model/message_model.dart';
 import 'package:get_x/app/data/model/user_model.dart';
 
 class UserProvider {
@@ -63,5 +64,38 @@ class UserProvider {
     final favorite = response.data['data'];
 
     return favorite;
+  }
+
+  Future sendMessage(String message, String userId, String senderId) async {
+    String api = API().url;
+    final response = await dio.post('$api${BaseUrls.sendMessage}', data: {
+      'userId': userId,
+      'senderId': senderId,
+      'message': message,
+      'read': true,
+    });
+
+    return response;
+  }
+
+  Future getMessages(String userId, String senderId) async {
+    String api = API().url;
+    final response = await dio.get('$api${BaseUrls.message}', queryParameters: {
+      'userId': userId,
+      'senderId': senderId,
+    });
+
+    final messages = (response.data['data'] as List)
+        .map((message) => MessageModel.fromJson(message))
+        .toList();
+    return messages;
+  }
+
+  Future updateUser(String id, UserModel item) async {
+    String api = API().url;
+    final response =
+        await dio.put('$api${BaseUrls.register}/$id', data: item.toJson());
+
+    return response;
   }
 }

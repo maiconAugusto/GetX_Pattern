@@ -6,4 +6,6 @@ class BaseUrls {
   static const String register = 'register';
   static const String users = 'users';
   static const String user = 'user';
+  static const String sendMessage = 'send-message';
+  static const message = 'messages';
 }

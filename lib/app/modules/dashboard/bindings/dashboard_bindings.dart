@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get_x/app/data/provider/favoites_provider.dart';
 import 'package:get_x/app/data/provider/user_provider.dart';
 import 'package:get_x/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:get_x/app/modules/favorites/controllers/favorites_controller.dart';

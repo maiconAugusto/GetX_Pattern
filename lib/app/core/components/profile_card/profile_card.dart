@@ -51,7 +51,12 @@ class ProfileCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(radius),
                             child: SizedBox(
                               child: photo.isEmpty == true
-                                  ? Container()
+                                  ? const SizedBox(
+                                      height: 80,
+                                      width: 80,
+                                      child: Icon(
+                                          Icons.face_retouching_off_outlined),
+                                    )
                                   : Image.memory(
                                       const Base64Decoder()
                                           .convert(photo.split('base64,')[1]),

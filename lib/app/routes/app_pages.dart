@@ -51,7 +51,7 @@ class AppPages {
     GetPage(
       name: Routes.chat,
       page: () => const ChatView(),
-      binding: ChatBindinds(),
+      binding: ChatBindings(),
     ),
     GetPage(
       name: Routes.dashboard,
