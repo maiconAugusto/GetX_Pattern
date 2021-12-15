@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/data/model/message_model.dart';
@@ -13,11 +12,10 @@ class ChatController extends GetxController {
   BaseUtils utils = BaseUtils();
   late String userId = '';
   late String senderId = '';
+
   final RxList<MessageModel> _messages = RxList<MessageModel>();
   RxBool loading = false.obs;
-
   List<MessageModel> get messages => _messages.toList();
-
   TextEditingController message = TextEditingController();
 
   @override
@@ -56,20 +54,12 @@ class ChatController extends GetxController {
   }
 
   Uint8List renderAvatar(MessageModel item) {
-    if (item.senderId == senderId) {
-      Uint8List url =
-          const Base64Decoder().convert(item.senderPhoto!.split('base64,')[1]);
-      return url;
-    }
     Uint8List urls =
-        const Base64Decoder().convert(item.userPhoto!.split('base64,')[1]);
+        const Base64Decoder().convert(item.senderPhoto!.split('base64,')[1]);
     return urls;
   }
 
   renderName(MessageModel item) {
-    if (item.senderId == senderId) {
-      return item.senderName;
-    }
-    return item.userName;
+    return item.senderName;
   }
 }

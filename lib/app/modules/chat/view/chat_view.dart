@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/app/core/components/simmer/simmer.dart';
@@ -46,9 +44,16 @@ class ChatView extends GetView<ChatController> {
                                     fit: BoxFit.cover,
                                     height: 30,
                                     width: 30)),
-                            title: Text(
-                              controller.renderName(controller.messages[index]),
-                              style: Get.textTheme.bodyText1,
+                            title: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  controller
+                                      .renderName(controller.messages[index]),
+                                  style: Get.textTheme.bodyText1,
+                                ),
+                              ],
                             ),
                             subtitle: Text(
                               controller.messages[index].message ?? '',

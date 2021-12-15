@@ -104,26 +104,6 @@ class MyDataView extends GetView<MyDataController> {
                                           color: Colors.blueGrey[400]))),
                               const SizedBox(height: 30),
                               Text(
-                                'Informe seu e-mail.',
-                                style: TextStyle(
-                                    color: Colors.blueGrey[600],
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              TextFormField(
-                                controller: controller.emailController,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: const InputDecoration(
-                                    hintText: 'E-mail',
-                                    hintStyle: TextStyle(fontSize: 14)),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'E-mail é obrigatório.';
-                                  }
-                                },
-                              ),
-                              const SizedBox(height: 30),
-                              Text(
                                 'Informe seu telefone.',
                                 style: TextStyle(
                                     color: Colors.blueGrey[600],

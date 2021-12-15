@@ -76,7 +76,6 @@ class MyDataController extends GetxController {
 
       nameController.text = response.name ?? 'Não informado';
       dateBirthController.text = response.birthDate ?? 'Não informado';
-      emailController.text = response.email ?? 'Não informado';
       phoneController.text = response.phone ?? 'Não informado';
       cpfController.text = response.cpf ?? 'Não informado';
       cepController.text = response.cep ?? 'Não informado';
@@ -203,7 +202,7 @@ class MyDataController extends GetxController {
               cpf: cpfController.text,
               description: descriptionController.text,
               occupation: ocupationController.text,
-              email: emailController.text,
+              email: '',
               houseNumber: houseNumberController.text,
               id: '',
               phone: phoneController.text,
