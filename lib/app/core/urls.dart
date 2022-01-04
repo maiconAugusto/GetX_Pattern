@@ -8,4 +8,5 @@ class BaseUrls {
   static const String user = 'user';
   static const String sendMessage = 'send-message';
   static const message = 'messages';
+  static const resumeMessage = 'resume-chat';
 }

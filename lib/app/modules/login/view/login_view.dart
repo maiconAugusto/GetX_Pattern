@@ -74,6 +74,7 @@ class LoginView extends GetView<LoginController> {
                         ],
                       ),
                       child: TextFormField(
+                        textInputAction: TextInputAction.go,
                         obscureText: !controller.passwordVisible.value,
                         controller: controller.password,
                         decoration: InputDecoration(

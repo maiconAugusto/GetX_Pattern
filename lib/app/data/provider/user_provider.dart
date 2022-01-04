@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_x/app/core/api.dart';
 import 'package:get_x/app/core/urls.dart';
 import 'package:get_x/app/data/model/message_model.dart';
+import 'package:get_x/app/data/model/resume_list_model.dart';
 import 'package:get_x/app/data/model/user_model.dart';
 
 class UserProvider {
@@ -78,15 +79,29 @@ class UserProvider {
     return response;
   }
 
-  Future getMessages(String userId, String senderId) async {
+  Future getMessages(String userId, String senderId, int limit) async {
     String api = API().url;
     final response = await dio.get('$api${BaseUrls.message}', queryParameters: {
       'userId': userId,
       'senderId': senderId,
+      'limit': limit,
     });
 
     final messages = (response.data['data'] as List)
         .map((message) => MessageModel.fromJson(message))
+        .toList();
+    return messages;
+  }
+
+  Future getListResume(String senderId) async {
+    String api = API().url;
+    final response =
+        await dio.get('$api${BaseUrls.resumeMessage}', queryParameters: {
+      'senderId': senderId,
+    });
+
+    final messages = (response.data['data'] as List)
+        .map((message) => ResumeListModel.fromJson(message))
         .toList();
     return messages;
   }

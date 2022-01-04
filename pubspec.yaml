@@ -43,6 +43,7 @@ dependencies:
   fade_shimmer: ^2.0.1
   flutter_dotenv: ^5.0.2
   intl: ^0.17.0
+  socket_io_client: ^1.0.0
   dio: ^4.0.3
 
 

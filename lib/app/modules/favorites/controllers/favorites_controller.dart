@@ -4,7 +4,7 @@ import 'package:get_x/app/data/provider/favoites_provider.dart';
 import 'package:get_x/app/utils/base_utils.dart';
 
 class FavoritesController extends GetxController {
-  FavoritesProvider favorite = FavoritesProvider();
+  FavoritesProvider favorite = Get.put(FavoritesProvider());
   RxBool loading = false.obs;
   final RxList<FavoriteModel> _favorites = RxList<FavoriteModel>();
   BaseUtils utils = BaseUtils();
@@ -22,6 +22,7 @@ class FavoritesController extends GetxController {
       loading.value = true;
       String? id = await utils.getId();
 
+      _favorites.clear();
       final response = await favorite.listFavoritesById(id ?? '');
       _favorites.addAll(response);
       loading.value = false;

@@ -12,6 +12,7 @@ class ChatController extends GetxController {
   BaseUtils utils = BaseUtils();
   late String userId = '';
   late String senderId = '';
+  RxInt limit = 10.obs;
 
   final RxList<MessageModel> _messages = RxList<MessageModel>();
   RxBool loading = false.obs;
@@ -21,6 +22,7 @@ class ChatController extends GetxController {
   @override
   void onInit() async {
     await getIds();
+
     super.onInit();
   }
 
@@ -44,7 +46,7 @@ class ChatController extends GetxController {
   Future<void> getMessages(String userID, String senderID) async {
     try {
       loading.value = true;
-      final response = await _user.getMessages(userID, senderID);
+      final response = await _user.getMessages(userID, senderID, limit.toInt());
       _messages.addAll(response);
       loading.value = false;
     } catch (e) {

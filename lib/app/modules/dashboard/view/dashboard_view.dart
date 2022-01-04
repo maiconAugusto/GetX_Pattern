@@ -7,7 +7,7 @@ import 'package:get_x/app/modules/favorites/view/favorites_view.dart';
 import 'package:get_x/app/modules/home/view/home_view.dart';
 import 'package:get_x/app/modules/menu/view/menu_view.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends GetView<GetxController> {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
@@ -41,7 +41,12 @@ class DashboardView extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.indigoAccent,
+            elevation: 2,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white70,
             onTap: controller.changeTabIndex,
+            type: BottomNavigationBarType.fixed,
             currentIndex: controller.tabIndex,
             items: const [
               BottomNavigationBarItem(

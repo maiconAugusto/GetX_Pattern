@@ -5,7 +5,7 @@ import 'package:get_x/app/data/provider/user_provider.dart';
 import 'package:get_x/app/utils/base_utils.dart';
 
 class HomeController extends GetxController {
-  final UserProvider _users = Get.find<UserProvider>();
+  final UserProvider _users = Get.put(UserProvider());
   final RxBool value = false.obs;
   final RxBool loading = false.obs;
 
@@ -22,6 +22,8 @@ class HomeController extends GetxController {
 
   Future<void> requestAllUsers() async {
     try {
+      _usersPlatform.clear();
+
       loading.value = true;
       final response = await _users.allUsersPlatform();
       _usersPlatform.addAll(response);
